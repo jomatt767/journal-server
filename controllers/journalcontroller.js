@@ -70,7 +70,7 @@ router.put('/update/:entryId', validateSession, function(req, res) {
     .catch((err) => res.status(500).json({ error: err}));
 });
 router.delete("/delete/:id", validateSession, function (req, res){
-    const query = { where: { di: req.params.id, owner: req.user.id } };
+    const query = { where: { id: req.params.id, owner: req.user.id } };
 
     Journal.destroy(query)
     .then(() => res.status(200).json({ message: "journal Entry Removed"}))
